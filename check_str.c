@@ -75,41 +75,35 @@ void my_check_chain(info_f *info, char *buf, size_t *p, size_t i, size_t len)
  */
 int my_change_v(info_f *info)
 {
-	int i = 0;
-	list_f *node;
+int i = 0;
+list_f *node;
 
-	for (i = 0; info->argv[i]; i++)
-	{
-		if (info->argv[i][0] != '$' || !info->argv[i][1])
-			continue;
-		if (!my_strcmp(info->argv[i], "$?"))
-		{
-			my_change_string(&(info->argv[i]));
+for (i = 0; info->argv[i]; i++)
+{
+if (info->argv[i][0] != '$' || !info->argv[i][1])
+continue;
+if (!my_strcmp(info->argv[i], "$?"))
+{
+my_change_string(&(info->argv[i]), my_strdup(my_change_base(info->status, 10, 0)));
 
-						   my_strdup(my_change_base(info->status, 10, 0));
+continue;
+}
+if (!my_strcmp(info->argv[i], "$$"))
+{
+my_change_string(&(info->argv[i]), my_strdup(my_change_base(getpid(), 10, 0)));
 
-			continue;
-		}
-		if (!my_strcmp(info->argv[i], "$$"))
-		{
-			my_change_string(&(info->argv[i]));
+continue;
+}
+node = my_node_str_start(info->env, &info->argv[i][1], '=');
+if (node)
+{
+my_change_string(&(info->argv[i]), my_strdup(my_strchr(node->str, '=') + 1));
 
-						   my_strdup(my_change_base(getpid(), 10, 0));
-
-			continue;
-		}
-		node = my_node_str_start(info->env, &info->argv[i][1], '=');
-		if (node)
-		{
-			my_change_string(&(info->argv[i]));
-
-						   my_strdup(my_strchr(node->str, '=') + 1);
-
-			continue;
-		}
-		my_change_string(&info->argv[i], my_strdup(""));
-	}
-	return (0);
+continue;
+}
+my_change_string(&info->argv[i], my_strdup(""));
+}
+return (0);
 }
 /**
  * my_change_string - replaces string
