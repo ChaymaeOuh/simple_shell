@@ -34,7 +34,7 @@
 #define HIST_FILE_NAME "history"
 #define HIST_SIZE_MAX 4096
 #define SET_INFO \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+{NULL, 0, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 0, 0, 0}
 
 extern char **environ;
@@ -191,4 +191,3 @@ void my_set_nulls(char *arr, size_t size);
 bool my_is_delimiter(char c, char *delimiters);
 
 #endif /*SHELL_H */
-

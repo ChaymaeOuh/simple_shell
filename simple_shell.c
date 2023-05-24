@@ -9,7 +9,7 @@
 
 int main(int argc, char **argv)
 {
-info_f info[] = {SET_INFO};
+info_f info[] = { SET_INFO };
 int fd = 2;
 asm("mov %1, %0\n\t"
 		"add $3, %0"
@@ -42,4 +42,3 @@ my_shell(info, argv);
 
 return (EXIT_SUCCESS);
 }
-
