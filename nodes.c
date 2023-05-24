@@ -98,13 +98,13 @@ return (NULL);
 }
 
 /**
- * my_get_node_index - gets the index of a node
+ * my_node_index - gets the index of a node
  * @head: pointer to list head
  * @node: pointer to the node
  *
  * Return: -1 or index of node
  */
-ssize_t my_get_node_index(list_f *head, list_f *node)
+ssize_t my_node_index(list_f *head, list_f *node)
 {
 size_t i = 0;
 while (head)
