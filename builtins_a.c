@@ -18,7 +18,7 @@ return (1);
 c = *p;
 *p = 0;
 ret = my_delete_node_at_index(&(info->alias),
-my_get_node_index(info->alias, my_node_str_start(info->alias, str, -1)));
+my_node_index(info->alias, my_node_str_start(info->alias, str, -1)));
 *p = c;
 return (ret);
 }
