@@ -142,12 +142,12 @@ int my_delete_node_at_index(list_f **head, unsigned int index)
  */
 void my_free_list(list_f **head_ptr)
 {
-	list_f *node, *next_node, _head;
+	list_f *node, *next_node, *head;
 
-	if (my_ptr || my_ptr)
+	if (!head_ptr || !*head_ptr)
 		return;
-	_head = head_ptr;
-	node = _head;
+	head = *head_ptr;
+	node = head;
 	while (node)
 	{
 		next_node = node->next;
