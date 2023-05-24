@@ -35,7 +35,7 @@ exit(127);
 return (EXIT_FAILURE);
 }
 info->fd_read = fd;
-}
+
 my_gather_env(info);
 my_read_history(info);
 my_shell(info, argv);

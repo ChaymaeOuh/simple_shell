@@ -7,7 +7,7 @@
  *
  * Return: 1 if chain delimeter else 0
  */
-bool is_chain(info_f *info, char *buf, size_t *p)
+bool my_is_chain(info_f *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
