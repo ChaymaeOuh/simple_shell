@@ -15,7 +15,7 @@ printf("I am a beautiful code\n");
  * Return: 0 (Success)
  */
 
-int main(void)
+int main1(void)
 {
 print();
 
