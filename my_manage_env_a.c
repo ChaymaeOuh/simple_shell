@@ -24,7 +24,7 @@ char **my_get_environ(info_f *info)
  *		  Used to maintain constant function prototype.
  * @var: The name of the environment variable to add or update.
  * @value: The value of the environment variable to add or update.
- * Return: 0 if the environment variable was successfully added or updated, else 1.
+ * Return: Always 0.
  */
 
 int my_setenv(info_f *info, char *var, char *value)
@@ -33,9 +33,8 @@ int my_setenv(info_f *info, char *var, char *value)
 	list_f *node;
 	char *p;
 
-	/* Return 1 if either the variable name or value is not defined. */
 	if (!var || !value)
-		return (1);
+		return (0);
 
 	/* Allocate memory for the new environment variable. */
 	buf = malloc(my_strlen(var) + my_strlen(value) + 2);

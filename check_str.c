@@ -7,7 +7,7 @@
  *
  * Return: 1 if chain delimeter else 0
  */
-bool my_is_chain(info_f *info, char *buf, size_t *p)
+int my_is_chain(info_f *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
@@ -29,9 +29,9 @@ bool my_is_chain(info_f *info, char *buf, size_t *p)
 		info->sep_buff_kind = CHAIN_FLAG;
 	}
 	else
-		return (false);
+		return (0);
 	*p = j;
-	return (true);
+	return (1);
 }
 
 /**

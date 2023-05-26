@@ -10,12 +10,12 @@ printf("I am a beautiful code\n");
 }
 
 /**
- * main - Entry point of the program
+ * _main - Entry point of the program
  *
  * Return: 0 (Success)
  */
 
-int main1(void)
+int _main(void)
 {
 print();
 

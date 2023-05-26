@@ -61,7 +61,7 @@ void my_free_info(info_f *info, int all)
 			my_free_list(&(info->alias));
 		my_free_vector(info->environ);
 		info->environ = NULL;
-		free((void **)info->sep_buff);
+		my_bfree((void **)info->sep_buff);
 		if (info->fd_read > 2)
 			close(info->fd_read);
 		my_putchar(NEG_ONE);

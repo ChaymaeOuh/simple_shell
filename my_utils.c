@@ -60,7 +60,7 @@ int my_atoi(char *s)
 /**
  * my_is_delimiter - checks if a character is a delimiter
  * @c: Character to be checked.
- * @delimiters: String of charaters to be compated.
+ * @delim: String of charaters to be compated.
  *
  * This function compares a character to one or more of delimiters
  * to see if the character matches any of the delimiters.
@@ -68,12 +68,11 @@ int my_atoi(char *s)
  * Return: True if it is a delimiter, else false.
  */
 
-bool my_is_delimiter(char c, char *delimiters)
+int my_is_delimiter(char c, char *delim)
 {
-	int s;
-
-	for (s = 0; delimiters[s]; s++)
-		if (c == delimiters[s])
-			return (true);
-	return (false);
+while (*delim)
+if (*delim++ == c)
+return (1);
+return (0);
 }
+

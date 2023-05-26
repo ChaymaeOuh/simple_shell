@@ -21,20 +21,26 @@
 
 #define BUFFER_SIZE_READ 1024
 #define BUFFER_SIZE_WRITE 1024
+#define BUF_FLUSH -1
+
 #define MAX_WORD_COUNT 100
 #define NEG_ONE -1
 #define REG_FLAG 0
 #define OR_FLAG 1
 #define AND_FLAG 2
 #define CHAIN_FLAG 3
+
 #define BAS_CHANGE_LOWER 1
 #define BAS_CHANGE_UNSIG 2
+
 #define USE_GETLINE 0
 #define USE_STRTOK 0
+
 #define HIST_FILE_NAME "history"
 #define HIST_SIZE_MAX 4096
+
 #define SET_INFO \
-{NULL, 0, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 0, 0, 0}
 
 extern char **environ;
@@ -76,9 +82,9 @@ struct NodeList *next;
 typedef struct NodeInfo
 {
 char *arg;
-int argc;
 char **argv;
 char *path;
+int argc;
 size_t lines;
 int error_code;
 int lc_flag;
@@ -109,7 +115,7 @@ int (*func)(info_f *);
 
 
 
-int my_shell(info_f *info, char **av);
+int my_shell(info_f *info, char **);
 int my_write_char(char c, int fd);
 int my_write_chars(char *str, int fd);
 int my_strlen(char *s);
@@ -161,7 +167,7 @@ void my_comments(char *);
 void my_free_list(list_f **);
 void my_check_chain(info_f *info, char *buf, size_t *p, size_t i, size_t len);
 int my_builtin(info_f *);
-bool my_is_executable(info_f *, char *);
+int my_is_executable(info_f *, char *);
 int my_loophsh(char **);
 int my_bfree(void **);
 int my_from_terminal(info_f *);
@@ -172,7 +178,7 @@ int my_read_history(info_f *info);
 int my_update_history(info_f *info, char *buf, int linecount);
 int my_renumber_history(info_f *info);
 int my_delete_node_at_index(list_f **, unsigned int);
-bool my_is_chain(info_f *, char *, size_t *);
+int my_is_chain(info_f *, char *, size_t *);
 int my_change_alias(info_f *);
 int my_change_v(info_f *);
 int my_change_string(char **, char *);
@@ -188,6 +194,6 @@ char **my_split_string(char *str, char *separators, size_t *word_count);
 int my_words_count(char *str, char *separators, unsigned int *arr);
 void my_set_zeros(unsigned int *arr, size_t size);
 void my_set_nulls(char *arr, size_t size);
-bool my_is_delimiter(char c, char *delimiters);
+int my_is_delimiter(char c, char *delim);
 
 #endif /*SHELL_H */

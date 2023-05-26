@@ -7,7 +7,7 @@
  *
  * Return: 1 if true, 0 otherwise
  */
-bool my_is_executable(info_f *info, char *path)
+int my_is_executable(info_f *info, char *path)
 {
 	struct stat st;
 
@@ -17,9 +17,9 @@ bool my_is_executable(info_f *info, char *path)
 
 	if (st.st_mode & S_IFREG)
 	{
-		return (true);
+		return (1);
 	}
-	return (false);
+	return (0);
 }
 
 /**
